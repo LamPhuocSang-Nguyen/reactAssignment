@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/LamPhuocSang-Nguyen.github.io/reactAssignment/static/css/main.675ce062.css",
-    "main.js": "/LamPhuocSang-Nguyen.github.io/reactAssignment/static/js/main.6b91b72c.js",
-    "index.html": "/LamPhuocSang-Nguyen.github.io/reactAssignment/index.html",
-    "main.675ce062.css.map": "/LamPhuocSang-Nguyen.github.io/reactAssignment/static/css/main.675ce062.css.map",
-    "main.6b91b72c.js.map": "/LamPhuocSang-Nguyen.github.io/reactAssignment/static/js/main.6b91b72c.js.map"
+    "main.css": "/reactAssignment/static/css/main.675ce062.css",
+    "main.js": "/reactAssignment/static/js/main.6b91b72c.js",
+    "index.html": "/reactAssignment/index.html",
+    "main.675ce062.css.map": "/reactAssignment/static/css/main.675ce062.css.map",
+    "main.6b91b72c.js.map": "/reactAssignment/static/js/main.6b91b72c.js.map"
   },
   "entrypoints": [
     "static/css/main.675ce062.css",

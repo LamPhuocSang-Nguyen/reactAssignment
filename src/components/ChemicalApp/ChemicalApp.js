@@ -8,7 +8,7 @@ import { deleteChemical, editChemical } from '../../redux/ChemicalSlice';
 export default function ChemicalApp() {
     const dispatch = useDispatch();
     const { chemicals } = useSelector((state) => state.chemicals);
-    const [isEdit,setIsedit] = useState(false);
+    const [isEdit,setIsEdit] = useState({id:"", flag:false});
     const [valueChemical, setValueChemical] = useState("");
 
     console.log(chemicals)
@@ -41,16 +41,18 @@ export default function ChemicalApp() {
                         chemicals.map((item) => (
                             <tr key={item.id}>
                                 <th scope="row">{item.id}</th>
-                                <td onDoubleClick={(e)=>setIsedit(!isEdit)}>
-                                    {isEdit&&isEdit?<Input type='text' value={valueChemical} onChange={(e)=>setValueChemical(e.target.value)} onKeyDown={(e)=>{
+                                {
+                                    isEdit.id===item.id && isEdit.flag===true ? <td><Input type='text' value={valueChemical} onChange={(e)=>setValueChemical(e.target.value)} onKeyDown={(e)=>{
                                         if(e.key==="Enter"){
-                                            dispatch(editChemical({id:item.id,name:item.name}))
-                                            setIsedit(!isEdit);
+                                            dispatch(editChemical({id:item.id,name:valueChemical}));
+                                            setValueChemical("");
+                                            setIsEdit({id:item.name, flag:!isEdit.flag})
                                         }
-                                    }}></Input>:item.name}
-                                </td>
+                                    }}></Input></td> : <td>{item.name}</td>
+                                }
                                 <td>{item.formula}</td>
-                                <td><Button onClick={()=>(dispatch(deleteChemical(item.id)))}>X</Button></td>
+                                <td><Button onClick={()=>(dispatch(deleteChemical(item.id)))}>X</Button>
+                                <Button onClick={()=>(setIsEdit({id:item.id, flag:!isEdit.flag}), setValueChemical(item.name))}>Edit</Button></td>
                             </tr>
                         ))
                     }

@@ -9,7 +9,7 @@ function App() {
       <Router>
 
         <Routes>
-          <Route index element={<Home />}></Route>
+          <Route path="/reactAssignment/" index element={<Home />}></Route>
           <Route path="/AddChemicalpage" element={<AddChemicalpage />}></Route>
           {/* <Route path="/detail/:id" element={<ProductDetail />}></Route> */}
           {/* <Route path="/ShowCart" element={<ShowCart />}></Route>

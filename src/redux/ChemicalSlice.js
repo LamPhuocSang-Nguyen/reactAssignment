@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { useEffect } from 'react';
+import { act, useEffect } from 'react';
 
 
 const initialState = {
@@ -45,20 +45,20 @@ const ChemicalSlice = createSlice({
     initialState,
     reducers: {
         addChemical(state, action) {
-            state.chemicals = [...state.chemicals, { id:6, name: action.payload, formula: null }];
-            console.log(state.chemicals)
+            state.chemicals = [...state.chemicals, { id:state.chemicals.length === 0 ? 1 : state.chemicals.reduce((value,item)=>Math.max(item.id,value)+1,0) , name: action.payload, formula: null }];
         },
         deleteChemical(state, action) {
             let newList = state.chemicals.filter((item) => item.id !== action.payload);
             state.chemicals = newList;
-            console.log(state.chemicals)
         },
         editChemical(state, action) {
-            state.chemicals.map((item) => {
-                if (item.id === action.payload.id) {
-                    item.name = action.payload.name;
-                }
-            })
+
+            console.log(action.payload)
+            const item = state.chemicals.find((item) => item.id === action.payload.id);
+
+            if(item){
+                item.name = action.payload.name
+            }
         }
     }
 })
